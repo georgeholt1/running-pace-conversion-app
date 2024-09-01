@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "running-pace-conversion-app"
+version = "0.1.0"
+description = "A Streamlit app for converting between running pace units"
+authors = ["George Holt <georgeholt77@googlemail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+streamlit = "^1.38.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.8.0"
+isort = "^5.13.2"
+pre-commit = "^3.8.0"
+pytest = "^8.3.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+profile = "black"
