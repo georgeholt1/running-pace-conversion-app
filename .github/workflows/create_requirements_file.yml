@@ -22,7 +22,7 @@ jobs:
       - name: Setup
         uses: ./.github/actions/ci-setup
         with:
-          python-version: 3.10
+          python-version: "3.10"
 
       - name: Create requirements file
         run: poetry export -f requirements.txt --output requirements.txt
