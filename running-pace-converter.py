@@ -236,6 +236,7 @@ def layout(*args):
         left=0,
         bottom=0,
         margin=px(0, 0, 0, 0),
+        padding=px(0, 0, 25, 0),
         width=percent(100),
         color="white",
         text_align="center",
