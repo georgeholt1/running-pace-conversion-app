@@ -28,7 +28,7 @@ jobs:
       - name: Commit requirements file
         run: |
           git config --global user.name "GitHub Actions"
-          git config --global user.email "georgeholt77@googlemail.com"
+          git config --global user.email "50923318+georgeholt1@users.noreply.github.com"
           git add requirements.txt
           git commit -m "GitHub Actions: Update requirements.txt"
           git push
