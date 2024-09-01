@@ -1,5 +1,4 @@
 name: Formatting tests
-description: Run formatting tests on the repository with black and isort
 
 on:
   pull_request:

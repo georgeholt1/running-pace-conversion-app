@@ -1,5 +1,4 @@
 name: Create requirements file
-description: Create a requirements.txt file from a Poetry-managed pyproject.toml file and commit it to the repository when a pull request is marked as ready for review
 
 on:
   pull_request:
