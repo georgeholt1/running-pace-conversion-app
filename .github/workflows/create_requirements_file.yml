@@ -1,0 +1,35 @@
+name: Create requirements file
+description: Create a requirements.txt file from a Poetry-managed pyproject.toml file and commit it to the repository when a pull request is marked as ready for review
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - ready_for_review
+
+jobs:
+  create_requirements_file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Configure git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "georgeholt77@googlemail.com"
+
+      - name: Setup
+        uses: ./.github/actions/ci-setup
+        with:
+          python-version: 3.10
+
+      - name: Create requirements file
+        run: poetry export -f requirements.txt --output requirements.txt
+
+      - name: Commit requirements file
+        run: |
+          git add requirements.txt
+          git commit -m "GitHub Actions: Update requirements.txt"
+          git push
