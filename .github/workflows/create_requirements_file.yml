@@ -1,0 +1,38 @@
+name: Create requirements file
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  create_requirements_file:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Setup
+        uses: ./.github/actions/ci-setup
+        with:
+          python-version: "3.10"
+
+      - name: Create requirements file
+        run: poetry export -f requirements.txt --output requirements.txt
+
+      - name: Commit requirements file
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |          
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "50923318+georgeholt1@users.noreply.github.com"
+          git add requirements.txt
+          git commit -m "GitHub Actions: Update requirements.txt"
+          
+      - name: Push changes
+        run: |
+          git push
