@@ -10,6 +10,8 @@ Given any one of the following inputs:
 
 The app will calculate pace in minutes per kilometer and per mile, as well as speed in kilometers per hour and miles per hour.
 
+The app is deployed [here](https://running-pace-conversion.streamlit.app/).
+
 ## Installation
 
 Start by cloning the repository.
