@@ -20,10 +20,16 @@ jobs:
       - name: Create requirements file
         run: poetry export -f requirements.txt --output requirements.txt
 
-      - name: Dump GitHub context
+      - name: Dump and access head_ref from GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: |
+          echo "Dumping GitHub context:"
+          echo "$GITHUB_CONTEXT"
+          
+          # Access and print the 'head_ref' value from the JSON context
+          head_ref=$(echo "$GITHUB_CONTEXT" | jq -r '.head_ref')
+          echo "The head_ref is: $head_ref"
 
       - name: Commit requirements file
         run: |
