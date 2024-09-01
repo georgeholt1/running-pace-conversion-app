@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Setup
         uses: ./.github/actions/ci-setup
@@ -31,8 +33,6 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "50923318+georgeholt1@users.noreply.github.com"
-          git remote set-url origin https://github.com/georgeholt1/running-pace-conversion-app
-          git checkout $head_ref
           git add requirements.txt
           git commit -m "GitHub Actions: Update requirements.txt"
-          git push origin $head_ref
+          git push
