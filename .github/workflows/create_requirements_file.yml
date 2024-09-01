@@ -24,15 +24,16 @@ jobs:
       - name: Create requirements file
         run: poetry export -f requirements.txt --output requirements.txt
 
-      - name: Commit requirements file
+      - name: Commit and push changes if there are any
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: |          
+        run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "50923318+georgeholt1@users.noreply.github.com"
-          git add requirements.txt
-          git commit -m "GitHub Actions: Update requirements.txt"
-          
-      - name: Push changes
-        run: |
-          git push
+          if git diff --quiet; then
+            echo "No changes to commit."
+          else
+            git add requirements.txt
+            git commit -m "GitHub Actions: Update requirements.txt"
+            git push
+          fi
