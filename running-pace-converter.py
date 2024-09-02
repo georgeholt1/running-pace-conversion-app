@@ -64,6 +64,14 @@ def calculate_kph(km, secs):
 # App
 # ----------------------------------------------------------------------
 
+st.set_page_config(
+    menu_items={
+        "About": """Made by [George Holt](http://georgeholt1.github.io).  
+Source code available on [GitHub](https://github.com/georgeholt1/running-pace-conversion-app).  
+Copyright 2024 George Holt. All rights reserved.""",
+    }
+)
+
 st.title("Running pace converter")
 
 st.markdown(
