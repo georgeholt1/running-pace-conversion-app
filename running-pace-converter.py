@@ -68,7 +68,8 @@ st.title("Running pace converter")
 st.markdown(
     """This app converts between running pace and speed units.
 
-To get started, select the tab for the known units and enter the values."""
+To start, select the tab for the known units and enter some values.
+Results are displayed in the box below."""
 )
 
 pace_tab, distance_and_time_tab = st.tabs(["Pace", "Distance and time"])
