@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
 # Constants
 # ----------------------------------------------------------------------
@@ -205,3 +206,19 @@ with distance_and_time_tab:
                 st.markdown(f"Speed (km/h):  \n{kph:.2f}")
             with col_kph_result:
                 st.markdown(f"Speed (miles/h):  \n{mph:.2f}")
+
+# Footer
+# ----------------------------------------------------------------------
+
+html_string = """
+<script>
+// To break out of iframe and access the parent window
+const streamlitDoc = window.parent.document;
+
+// Make the replacement
+document.addEventListener("DOMContentLoaded", function(event){
+        streamlitDoc.getElementsByTagName("footer")[0].innerHTML = "Made using <a href='https://streamlit.io'>Streamlit</a> with ❤️ by <a href='https://georgeholt1.github.io/'>George Holt</a>";
+    });
+</script>
+"""
+components.html(html_string)
